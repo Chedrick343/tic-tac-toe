@@ -30,7 +30,7 @@ def actions(board):
     for i in range(filas):
         for j in range(columnas):
             if board[i][j] is None:
-                tupla = (i, j)
+                tupla = (j, i)
                 resultado += [tupla]
     return resultado
 
@@ -48,19 +48,28 @@ def terminal(board):
     resultado = False
     filas = len(board)
     columnas = len(board[0])
-    for i in range(filas):
-        for j in range(columnas):
-            if len(set(board[i])) <= 1:
-                return  True
-    conjunto = []
-    isEqual = False
     for i in range(columnas):
         for j in range(filas):
-            conjunto += [board[j][i]]
-        if len(set(conjunto)) <= 1:
-            return True
-    
-
+            if board[j][0] == board[j][1] and board[j][1] == board[j][2]:
+                return True
+            if board[0][i] == board[1][i] and board[1][i] == board[2][i]:
+                return True
+            
+    """
+        
+        for i in range(filas):
+            for j in range(columnas):
+                if len(set(board[i])) <= 1:
+                    return  True
+        conjunto = []
+        isEqual = False
+        for i in range(columnas):
+            for j in range(filas):
+                conjunto += [board[j][i]]
+            if len(set(conjunto)) <= 1:
+                return True
+        
+    """
     diagonal1 = [board[0][0], board[1][1], board[2][2]]
     diagonal2 = [board[0][2], board[1][1], board[2][0]]
 
