@@ -7,6 +7,11 @@ from utils import utility, terminal, result, actions, players, PLAYER_X
 
 
 def min_value(board):
+
+    if (terminal(board)):
+        return utility(board)
+    
+    
     """
     Choose the action a in actions(s) that minimizes max - value(result(s, a))
     """
